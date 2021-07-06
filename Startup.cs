@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Rocket_Elevators_REST_API.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Rocket_Elevators_REST_API
 {
@@ -26,6 +28,8 @@ namespace Rocket_Elevators_REST_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<lukagasicContext>(options =>
+                options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
