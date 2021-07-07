@@ -12,6 +12,7 @@ namespace Rocket_Elevators_REST_API.Models
 
         public long Id { get; set; }
         public string Btype { get; set; }
+        public string Status { get; set; }
         public DateTime? DateOfCommissioning { get; set; }
         public DateTime? DateOfLastInspection { get; set; }
         public string CertificateOfOperations { get; set; }

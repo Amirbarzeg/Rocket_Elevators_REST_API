@@ -37,7 +37,8 @@ namespace Rocket_Elevators_REST_API.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySQL("DefaultConnection");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseMySQL("Server=codeboxx.cq6zrczewpu2.us-east-1.rds.amazonaws.com;Port=3306;Database=lukagasic;Uid=codeboxx;Pwd=Codeboxx1!;SslMode=none");
             }
         }
 
@@ -197,6 +198,8 @@ namespace Rocket_Elevators_REST_API.Models
                 entity.Property(e => e.EmployeeId)
                     .HasColumnName("employee_id")
                     .HasColumnType("bigint(20)");
+
+                entity.Property(e => e.Status).HasMaxLength(255);
 
                 entity.HasOne(d => d.Building)
                     .WithMany(p => p.Batteries)
