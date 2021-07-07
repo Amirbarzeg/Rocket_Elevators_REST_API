@@ -55,6 +55,17 @@ namespace Rocket_Elevators_REST_API.Controllers
 
             return await _context.Elevators.FindAsync(id);
         }
+
+        //Get: api/Elevators/NotActive
+        //List all the elevators where status is not active. 
+        [HttpGet("NotActive")]
+        public object GetElevatorsNotActive()
+        {
+            return _context.Elevators
+                  .Where(elevator => elevator.Status != "Active")
+                  .Select(elevator => new { elevator.Id, elevator.Status });
+
+        }
     }
 
 }

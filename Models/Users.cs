@@ -15,6 +15,10 @@ namespace Rocket_Elevators_REST_API.Models
         public string Email { get; set; }
         public string EncryptedPassword { get; set; }
         public string ResetPasswordToken { get; set; }
+        public DateTime? ResetPasswordSentAt { get; set; }
+        public DateTime? RememberCreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
         public virtual ICollection<Customers> Customers { get; set; }
         public virtual ICollection<Employees> Employees { get; set; }

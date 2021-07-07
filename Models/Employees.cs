@@ -15,6 +15,8 @@ namespace Rocket_Elevators_REST_API.Models
         public string LastName { get; set; }
         public string Title { get; set; }
         public string Email { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
         public long? UserId { get; set; }
 
         public virtual Users User { get; set; }

@@ -15,6 +15,8 @@ namespace Rocket_Elevators_REST_API.Models
         public string CertificateOfInspection { get; set; }
         public string Info { get; set; }
         public string Notes { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
         public long? ColumnId { get; set; }
 
         public virtual Columns Column { get; set; }

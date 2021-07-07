@@ -23,6 +23,8 @@ namespace Rocket_Elevators_REST_API.Models
         public float? Latitude { get; set; }
         public float? Longitude { get; set; }
         public string Notes { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
         public virtual ICollection<Buildings> Buildings { get; set; }
         public virtual ICollection<Customers> Customers { get; set; }

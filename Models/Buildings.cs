@@ -18,6 +18,8 @@ namespace Rocket_Elevators_REST_API.Models
         public string FullNameOfTheTechContactForTheBuilding { get; set; }
         public string TechContactEmail { get; set; }
         public string TechContactPhone { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
         public long? CustomerId { get; set; }
         public long? AddressId { get; set; }
 

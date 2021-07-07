@@ -16,6 +16,8 @@ namespace Rocket_Elevators_REST_API.Models
         public string Status { get; set; }
         public string Info { get; set; }
         public string Notes { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
         public long? BatteryId { get; set; }
 
         public virtual Batteries Battery { get; set; }
