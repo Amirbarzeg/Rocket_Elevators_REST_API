@@ -18,6 +18,8 @@ namespace Rocket_Elevators_REST_API.Models
         public string CertificateOfOperations { get; set; }
         public string Info { get; set; }
         public string Notes { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
         public long? BuildingId { get; set; }
         public long? EmployeeId { get; set; }
 

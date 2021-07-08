@@ -63,10 +63,13 @@ namespace Rocket_Elevators_REST_API.Models
                     .HasColumnName("blob_id")
                     .HasColumnType("bigint(20)");
 
+                entity.Property(e => e.CreatedAt).HasColumnName("created_at");
+
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasColumnName("name")
-                    .HasMaxLength(255);
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.RecordId)
                     .HasColumnName("record_id")
@@ -75,7 +78,8 @@ namespace Rocket_Elevators_REST_API.Models
                 entity.Property(e => e.RecordType)
                     .IsRequired()
                     .HasColumnName("record_type")
-                    .HasMaxLength(255);
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
                 entity.HasOne(d => d.Blob)
                     .WithMany(p => p.ActiveStorageAttachments)
@@ -103,21 +107,27 @@ namespace Rocket_Elevators_REST_API.Models
                 entity.Property(e => e.Checksum)
                     .IsRequired()
                     .HasColumnName("checksum")
-                    .HasMaxLength(255);
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.ContentType)
                     .HasColumnName("content_type")
-                    .HasMaxLength(255);
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedAt).HasColumnName("created_at");
 
                 entity.Property(e => e.Filename)
                     .IsRequired()
                     .HasColumnName("filename")
-                    .HasMaxLength(255);
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Key)
                     .IsRequired()
                     .HasColumnName("key")
-                    .HasMaxLength(255);
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Metadata).HasColumnName("metadata");
             });
@@ -130,25 +140,45 @@ namespace Rocket_Elevators_REST_API.Models
                     .HasColumnName("id")
                     .HasColumnType("bigint(20)");
 
-                entity.Property(e => e.Apt).HasMaxLength(255);
+                entity.Property(e => e.Apt)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.City).HasMaxLength(255);
+                entity.Property(e => e.City)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.Country).HasMaxLength(255);
+                entity.Property(e => e.Country)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.Entity).HasMaxLength(255);
+                entity.Property(e => e.CreatedAt).HasColumnName("created_at");
+
+                entity.Property(e => e.Entity)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Latitude).HasColumnName("latitude");
 
                 entity.Property(e => e.Longitude).HasColumnName("longitude");
 
-                entity.Property(e => e.NumberAndStreet).HasMaxLength(255);
+                entity.Property(e => e.NumberAndStreet)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.PostalCode).HasMaxLength(255);
+                entity.Property(e => e.PostalCode)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.Status).HasMaxLength(255);
+                entity.Property(e => e.Status)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.TypeOfAddress).HasMaxLength(255);
+                entity.Property(e => e.TypeOfAddress)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
             });
 
             modelBuilder.Entity<ArInternalMetadata>(entity =>
@@ -160,11 +190,17 @@ namespace Rocket_Elevators_REST_API.Models
 
                 entity.Property(e => e.Key)
                     .HasColumnName("key")
-                    .HasMaxLength(255);
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedAt).HasColumnName("created_at");
+
+                entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
 
                 entity.Property(e => e.Value)
                     .HasColumnName("value")
-                    .HasMaxLength(255);
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Batteries>(entity =>
@@ -183,13 +219,18 @@ namespace Rocket_Elevators_REST_API.Models
 
                 entity.Property(e => e.Btype)
                     .HasColumnName("BType")
-                    .HasMaxLength(255);
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.BuildingId)
                     .HasColumnName("building_id")
                     .HasColumnType("bigint(20)");
 
-                entity.Property(e => e.CertificateOfOperations).HasMaxLength(255);
+                entity.Property(e => e.CertificateOfOperations)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedAt).HasColumnName("created_at");
 
                 entity.Property(e => e.DateOfCommissioning).HasColumnType("date");
 
@@ -199,7 +240,11 @@ namespace Rocket_Elevators_REST_API.Models
                     .HasColumnName("employee_id")
                     .HasColumnType("bigint(20)");
 
-                entity.Property(e => e.Status).HasMaxLength(255);
+                entity.Property(e => e.Status)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
 
                 entity.HasOne(d => d.Building)
                     .WithMany(p => p.Batteries)
@@ -227,9 +272,17 @@ namespace Rocket_Elevators_REST_API.Models
                     .HasColumnName("building_id")
                     .HasColumnType("bigint(20)");
 
-                entity.Property(e => e.InformationKey).HasMaxLength(255);
+                entity.Property(e => e.CreatedAt).HasColumnName("created_at");
 
-                entity.Property(e => e.Value).HasMaxLength(255);
+                entity.Property(e => e.InformationKey)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
+
+                entity.Property(e => e.Value)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
                 entity.HasOne(d => d.Building)
                     .WithMany(p => p.BuildingDetails)
@@ -255,21 +308,37 @@ namespace Rocket_Elevators_REST_API.Models
                     .HasColumnName("address_id")
                     .HasColumnType("bigint(20)");
 
+                entity.Property(e => e.CreatedAt).HasColumnName("created_at");
+
                 entity.Property(e => e.CustomerId)
                     .HasColumnName("customer_id")
                     .HasColumnType("bigint(20)");
 
-                entity.Property(e => e.EmailOfTheAdministratorOfTheBuilding).HasMaxLength(255);
+                entity.Property(e => e.EmailOfTheAdministratorOfTheBuilding)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.FullNameOfTheBuildingAdministrator).HasMaxLength(255);
+                entity.Property(e => e.FullNameOfTheBuildingAdministrator)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.FullNameOfTheTechContactForTheBuilding).HasMaxLength(255);
+                entity.Property(e => e.FullNameOfTheTechContactForTheBuilding)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.PhoneNumberOfTheBuildingAdministrator).HasMaxLength(255);
+                entity.Property(e => e.PhoneNumberOfTheBuildingAdministrator)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.TechContactEmail).HasMaxLength(255);
+                entity.Property(e => e.TechContactEmail)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.TechContactPhone).HasMaxLength(255);
+                entity.Property(e => e.TechContactPhone)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
 
                 entity.HasOne(d => d.Address)
                     .WithMany(p => p.Buildings)
@@ -297,11 +366,19 @@ namespace Rocket_Elevators_REST_API.Models
                     .HasColumnName("battery_id")
                     .HasColumnType("bigint(20)");
 
-                entity.Property(e => e.ColumnType).HasMaxLength(255);
+                entity.Property(e => e.ColumnType)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedAt).HasColumnName("created_at");
 
                 entity.Property(e => e.NbOfFloorsServed).HasColumnType("int(11)");
 
-                entity.Property(e => e.Status).HasMaxLength(255);
+                entity.Property(e => e.Status)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
 
                 entity.HasOne(d => d.Battery)
                     .WithMany(p => p.Columns)
@@ -327,19 +404,37 @@ namespace Rocket_Elevators_REST_API.Models
                     .HasColumnName("address_id")
                     .HasColumnType("bigint(20)");
 
-                entity.Property(e => e.CompanyContactPhone).HasMaxLength(255);
+                entity.Property(e => e.CompanyContactPhone)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.CompanyName).HasMaxLength(255);
+                entity.Property(e => e.CompanyName)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.EmailOfTheCompany).HasMaxLength(255);
+                entity.Property(e => e.CreatedAt).HasColumnName("created_at");
 
-                entity.Property(e => e.NameOfContact).HasMaxLength(255);
+                entity.Property(e => e.EmailOfTheCompany)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.NameOfServiceTechAuthority).HasMaxLength(255);
+                entity.Property(e => e.NameOfContact)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.TechAuhtorityPhone).HasMaxLength(255);
+                entity.Property(e => e.NameOfServiceTechAuthority)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.TechManagerServiceEmail).HasMaxLength(255);
+                entity.Property(e => e.TechAuhtorityPhone)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.TechManagerServiceEmail)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
 
                 entity.Property(e => e.UserId)
                     .HasColumnName("user_id")
@@ -367,23 +462,37 @@ namespace Rocket_Elevators_REST_API.Models
                     .HasColumnName("id")
                     .HasColumnType("bigint(20)");
 
-                entity.Property(e => e.CertificateOfInspection).HasMaxLength(255);
+                entity.Property(e => e.CertificateOfInspection)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.ColumnId)
                     .HasColumnName("column_id")
                     .HasColumnType("bigint(20)");
 
+                entity.Property(e => e.CreatedAt).HasColumnName("created_at");
+
                 entity.Property(e => e.DateOfCommissioning).HasColumnType("date");
 
                 entity.Property(e => e.DateOfLastInspection).HasColumnType("date");
 
-                entity.Property(e => e.ElevatorType).HasMaxLength(255);
+                entity.Property(e => e.ElevatorType)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.Model).HasMaxLength(255);
+                entity.Property(e => e.Model)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.SerialNumber).HasMaxLength(255);
+                entity.Property(e => e.SerialNumber)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.Status).HasMaxLength(255);
+                entity.Property(e => e.Status)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
 
                 entity.HasOne(d => d.Column)
                     .WithMany(p => p.Elevators)
@@ -402,13 +511,25 @@ namespace Rocket_Elevators_REST_API.Models
                     .HasColumnName("id")
                     .HasColumnType("bigint(20)");
 
-                entity.Property(e => e.Email).HasMaxLength(255);
+                entity.Property(e => e.CreatedAt).HasColumnName("created_at");
 
-                entity.Property(e => e.FirstName).HasMaxLength(255);
+                entity.Property(e => e.Email)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.LastName).HasMaxLength(255);
+                entity.Property(e => e.FirstName)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.Title).HasMaxLength(255);
+                entity.Property(e => e.LastName)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Title)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
 
                 entity.Property(e => e.UserId)
                     .HasColumnName("user_id")
@@ -430,21 +551,38 @@ namespace Rocket_Elevators_REST_API.Models
 
                 entity.Property(e => e.AttachedFile).HasColumnType("blob");
 
-                entity.Property(e => e.CompanyName).HasMaxLength(255);
+                entity.Property(e => e.CompanyName)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.Departement).HasMaxLength(255);
+                entity.Property(e => e.CreatedAt).HasColumnName("created_at");
+
+                entity.Property(e => e.Departement)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Email)
                     .HasColumnName("email")
-                    .HasMaxLength(255);
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.FullName).HasMaxLength(255);
+                entity.Property(e => e.FullName)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.Phone).HasMaxLength(255);
+                entity.Property(e => e.Phone)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.ProjectDescription).HasMaxLength(255);
+                entity.Property(e => e.ProjectDescription)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.ProjectName).HasMaxLength(255);
+                entity.Property(e => e.ProjectName)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
             });
 
             modelBuilder.Entity<Quotes>(entity =>
@@ -455,11 +593,17 @@ namespace Rocket_Elevators_REST_API.Models
                     .HasColumnName("id")
                     .HasColumnType("bigint(20)");
 
-                entity.Property(e => e.BuildingType).HasMaxLength(255);
+                entity.Property(e => e.BuildingType)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.ColumnAmount).HasColumnType("int(11)");
 
-                entity.Property(e => e.CompanyName).HasMaxLength(255);
+                entity.Property(e => e.CompanyName)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedAt).HasColumnName("created_at");
 
                 entity.Property(e => e.ElevatorAmount).HasColumnType("int(11)");
 
@@ -467,7 +611,9 @@ namespace Rocket_Elevators_REST_API.Models
 
                 entity.Property(e => e.ElevatorUnitCost).HasColumnType("int(11)");
 
-                entity.Property(e => e.Email).HasMaxLength(255);
+                entity.Property(e => e.Email)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.InstallationCost).HasColumnType("int(11)");
 
@@ -489,9 +635,13 @@ namespace Rocket_Elevators_REST_API.Models
 
                 entity.Property(e => e.NumberOfcompanies).HasColumnType("int(11)");
 
-                entity.Property(e => e.ProductLine).HasMaxLength(255);
+                entity.Property(e => e.ProductLine)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.TotalPrice).HasColumnType("int(11)");
+
+                entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
             });
 
             modelBuilder.Entity<Roles>(entity =>
@@ -511,9 +661,12 @@ namespace Rocket_Elevators_REST_API.Models
                     .HasColumnName("id")
                     .HasColumnType("bigint(20)");
 
+                entity.Property(e => e.CreatedAt).HasColumnName("created_at");
+
                 entity.Property(e => e.Name)
                     .HasColumnName("name")
-                    .HasMaxLength(255);
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.ResourceId)
                     .HasColumnName("resource_id")
@@ -521,7 +674,10 @@ namespace Rocket_Elevators_REST_API.Models
 
                 entity.Property(e => e.ResourceType)
                     .HasColumnName("resource_type")
-                    .HasMaxLength(255);
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
             });
 
             modelBuilder.Entity<SchemaMigrations>(entity =>
@@ -533,7 +689,8 @@ namespace Rocket_Elevators_REST_API.Models
 
                 entity.Property(e => e.Version)
                     .HasColumnName("version")
-                    .HasMaxLength(255);
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Users>(entity =>
@@ -552,21 +709,32 @@ namespace Rocket_Elevators_REST_API.Models
                     .HasColumnName("id")
                     .HasColumnType("bigint(20)");
 
+                entity.Property(e => e.CreatedAt).HasColumnName("created_at");
+
                 entity.Property(e => e.Email)
                     .IsRequired()
                     .HasColumnName("email")
                     .HasMaxLength(255)
+                    .IsUnicode(false)
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.EncryptedPassword)
                     .IsRequired()
                     .HasColumnName("encrypted_password")
                     .HasMaxLength(255)
+                    .IsUnicode(false)
                     .HasDefaultValueSql("''");
+
+                entity.Property(e => e.RememberCreatedAt).HasColumnName("remember_created_at");
+
+                entity.Property(e => e.ResetPasswordSentAt).HasColumnName("reset_password_sent_at");
 
                 entity.Property(e => e.ResetPasswordToken)
                     .HasColumnName("reset_password_token")
-                    .HasMaxLength(255);
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
             });
 
             modelBuilder.Entity<UsersRoles>(entity =>

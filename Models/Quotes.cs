@@ -23,6 +23,8 @@ namespace Rocket_Elevators_REST_API.Models
         public int? ElevatorTotalCost { get; set; }
         public int? InstallationCost { get; set; }
         public int? TotalPrice { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
         public string CompanyName { get; set; }
         public string Email { get; set; }
     }

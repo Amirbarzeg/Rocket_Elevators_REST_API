@@ -10,6 +10,7 @@ namespace Rocket_Elevators_REST_API.Models
         public string RecordType { get; set; }
         public long RecordId { get; set; }
         public long BlobId { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         public virtual ActiveStorageBlobs Blob { get; set; }
     }

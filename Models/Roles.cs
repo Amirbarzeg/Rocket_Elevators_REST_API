@@ -9,5 +9,7 @@ namespace Rocket_Elevators_REST_API.Models
         public string Name { get; set; }
         public string ResourceType { get; set; }
         public long? ResourceId { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
 }

@@ -17,6 +17,7 @@ namespace Rocket_Elevators_REST_API.Models
         public string Metadata { get; set; }
         public long ByteSize { get; set; }
         public string Checksum { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         public virtual ICollection<ActiveStorageAttachments> ActiveStorageAttachments { get; set; }
     }

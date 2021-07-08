@@ -19,6 +19,8 @@ namespace Rocket_Elevators_REST_API.Models
         public string NameOfServiceTechAuthority { get; set; }
         public string TechAuhtorityPhone { get; set; }
         public string TechManagerServiceEmail { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
         public long? UserId { get; set; }
         public long? AddressId { get; set; }
 
