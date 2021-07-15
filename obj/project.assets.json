@@ -7515,19 +7515,19 @@
     ]
   },
   "packageFolders": {
-    "/home/luks667/.nuget/packages/": {}
+    "/home/amirbarzegar/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/luks667/Github/Rocket_Elevators_REST_API/Rocket_Elevators_REST_API.csproj",
+      "projectUniqueName": "/home/amirbarzegar/Rocket_Elevators_REST_API/Rocket_Elevators_REST_API.csproj",
       "projectName": "Rocket_Elevators_REST_API",
-      "projectPath": "/home/luks667/Github/Rocket_Elevators_REST_API/Rocket_Elevators_REST_API.csproj",
-      "packagesPath": "/home/luks667/.nuget/packages/",
-      "outputPath": "/home/luks667/Github/Rocket_Elevators_REST_API/obj/",
+      "projectPath": "/home/amirbarzegar/Rocket_Elevators_REST_API/Rocket_Elevators_REST_API.csproj",
+      "packagesPath": "/home/amirbarzegar/.nuget/packages/",
+      "outputPath": "/home/amirbarzegar/Rocket_Elevators_REST_API/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/luks667/.nuget/NuGet/NuGet.Config"
+        "/home/amirbarzegar/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"

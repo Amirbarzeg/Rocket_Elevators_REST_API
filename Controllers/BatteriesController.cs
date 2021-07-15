@@ -13,9 +13,9 @@ namespace Rocket_Elevators_REST_API.Controllers
     [ApiController]
     public class BatteriesController : ControllerBase
     {
-        private readonly lukagasicContext _context;
+        private readonly AmirBarzegarContext _context;
 
-        public BatteriesController(lukagasicContext context)
+        public BatteriesController(AmirBarzegarContext context)
         {
             _context = context;
         }

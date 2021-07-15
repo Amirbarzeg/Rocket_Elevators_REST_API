@@ -8,6 +8,7 @@ namespace Rocket_Elevators_REST_API.Models
         public Employees()
         {
             Batteries = new HashSet<Batteries>();
+            Interventions = new HashSet<Interventions>();
         }
 
         public long Id { get; set; }
@@ -21,5 +22,6 @@ namespace Rocket_Elevators_REST_API.Models
 
         public virtual Users User { get; set; }
         public virtual ICollection<Batteries> Batteries { get; set; }
+        public virtual ICollection<Interventions> Interventions { get; set; }
     }
 }

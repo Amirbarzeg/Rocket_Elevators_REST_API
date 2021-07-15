@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Rocket_Elevators_REST_API.Models
 {
-    public partial class lukagasicContext : DbContext
+    public partial class AmirBarzegarContext : DbContext
     {
-        public lukagasicContext()
+        public AmirBarzegarContext()
         {
         }
 
-        public lukagasicContext(DbContextOptions<lukagasicContext> options)
+        public AmirBarzegarContext(DbContextOptions<AmirBarzegarContext> options)
             : base(options)
         {
         }
@@ -26,6 +26,7 @@ namespace Rocket_Elevators_REST_API.Models
         public virtual DbSet<Customers> Customers { get; set; }
         public virtual DbSet<Elevators> Elevators { get; set; }
         public virtual DbSet<Employees> Employees { get; set; }
+        public virtual DbSet<Interventions> Interventions { get; set; }
         public virtual DbSet<Leads> Leads { get; set; }
         public virtual DbSet<Quotes> Quotes { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
@@ -37,8 +38,7 @@ namespace Rocket_Elevators_REST_API.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySQL("Server=codeboxx.cq6zrczewpu2.us-east-1.rds.amazonaws.com;Port=3306;Database=lukagasic;Uid=codeboxx;Pwd=Codeboxx1!;SslMode=none");
+                optionsBuilder.UseMySQL("Server=codeboxx.cq6zrczewpu2.us-east-1.rds.amazonaws.com;Port=3306;Database=AmirBarzegar;Uid=codeboxx;Pwd=Codeboxx1!;SslMode=none");
             }
         }
 
@@ -539,6 +539,115 @@ namespace Rocket_Elevators_REST_API.Models
                     .WithMany(p => p.Employees)
                     .HasForeignKey(d => d.UserId)
                     .HasConstraintName("fk_rails_dcfd3d4fc3");
+            });
+
+            modelBuilder.Entity<Interventions>(entity =>
+            {
+                entity.ToTable("interventions");
+
+                entity.HasIndex(e => e.BatteryId)
+                    .HasName("index_interventions_on_battery_id");
+
+                entity.HasIndex(e => e.BuildingId)
+                    .HasName("index_interventions_on_building_id");
+
+                entity.HasIndex(e => e.ColumnId)
+                    .HasName("index_interventions_on_column_id");
+
+                entity.HasIndex(e => e.CustomerId)
+                    .HasName("index_interventions_on_customer_id");
+
+                entity.HasIndex(e => e.ElevatorId)
+                    .HasName("index_interventions_on_elevator_id");
+
+                entity.HasIndex(e => e.EmployeeId)
+                    .HasName("index_interventions_on_employee_id");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("bigint(20)");
+
+                entity.Property(e => e.AuthorId)
+                    .HasColumnName("author_id")
+                    .HasColumnType("bigint(20)");
+
+                entity.Property(e => e.BatteryId)
+                    .HasColumnName("battery_id")
+                    .HasColumnType("bigint(20)");
+
+                entity.Property(e => e.BuildingId)
+                    .HasColumnName("building_id")
+                    .HasColumnType("bigint(20)");
+
+                entity.Property(e => e.ColumnId)
+                    .HasColumnName("column_id")
+                    .HasColumnType("bigint(20)");
+
+                entity.Property(e => e.CreatedAt).HasColumnName("created_at");
+
+                entity.Property(e => e.CustomerId)
+                    .HasColumnName("customer_id")
+                    .HasColumnType("bigint(20)");
+
+                entity.Property(e => e.ElevatorId)
+                    .HasColumnName("elevator_id")
+                    .HasColumnType("bigint(20)");
+
+                entity.Property(e => e.EmployeeId)
+                    .HasColumnName("employee_id")
+                    .HasColumnType("bigint(20)");
+
+                entity.Property(e => e.EndDate).HasColumnName("end_date");
+
+                entity.Property(e => e.Report).HasColumnName("report");
+
+                entity.Property(e => e.Result)
+                    .HasColumnName("result")
+                    .HasMaxLength(255)
+                    .IsUnicode(false)
+                    .HasDefaultValueSql("'Incomplete'");
+
+                entity.Property(e => e.StartDate).HasColumnName("start_date");
+
+                entity.Property(e => e.Status)
+                    .HasColumnName("status")
+                    .HasMaxLength(255)
+                    .IsUnicode(false)
+                    .HasDefaultValueSql("'Pending'");
+
+                entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
+
+                entity.HasOne(d => d.Battery)
+                    .WithMany(p => p.Interventions)
+                    .HasForeignKey(d => d.BatteryId)
+                    .HasConstraintName("fk_rails_268aede6d6");
+
+                entity.HasOne(d => d.Building)
+                    .WithMany(p => p.Interventions)
+                    .HasForeignKey(d => d.BuildingId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_rails_911b4ef939");
+
+                entity.HasOne(d => d.Column)
+                    .WithMany(p => p.Interventions)
+                    .HasForeignKey(d => d.ColumnId)
+                    .HasConstraintName("fk_rails_d05fb241b3");
+
+                entity.HasOne(d => d.Customer)
+                    .WithMany(p => p.Interventions)
+                    .HasForeignKey(d => d.CustomerId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_rails_4242c0f569");
+
+                entity.HasOne(d => d.Elevator)
+                    .WithMany(p => p.Interventions)
+                    .HasForeignKey(d => d.ElevatorId)
+                    .HasConstraintName("fk_rails_11b5a4bd36");
+
+                entity.HasOne(d => d.Employee)
+                    .WithMany(p => p.Interventions)
+                    .HasForeignKey(d => d.EmployeeId)
+                    .HasConstraintName("fk_rails_2e0d31b7ad");
             });
 
             modelBuilder.Entity<Leads>(entity =>

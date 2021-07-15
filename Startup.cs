@@ -28,7 +28,7 @@ namespace Rocket_Elevators_REST_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<lukagasicContext>(options =>
+            services.AddDbContext<AmirBarzegarContext>(options =>
                 options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllers();

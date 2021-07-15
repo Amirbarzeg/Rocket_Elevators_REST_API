@@ -14,9 +14,9 @@ namespace Rocket_Elevators_REST_API.Controllers
 
     public class BuildingsController : ControllerBase
     {
-        private readonly lukagasicContext _context;
+        private readonly AmirBarzegarContext _context;
 
-        public BuildingsController(lukagasicContext context)
+        public BuildingsController(AmirBarzegarContext context)
         {
             _context = context;
         }
