@@ -20,6 +20,11 @@ namespace Rocket_Elevators_REST_API.Controllers
         {
             _context = context;
         }
+         [HttpGet]
+        public async Task<ActionResult<IEnumerable<Buildings>>> GetBatteries()
+        {
+            return await _context.Buildings.ToListAsync();
+        }
 
         [HttpGet("InterventionBuildings")]
         public async Task<ActionResult<IEnumerable<Buildings>>> GetInterventionBuildings()
@@ -39,7 +44,26 @@ namespace Rocket_Elevators_REST_API.Controllers
         return await distinctBuildings.ToListAsync();
         }
 
-       
+       [HttpGet("{email}")]
+        public async Task<ActionResult<List<Buildings>>> getBuildingsByEmail(string email)
+        {
+        // var findBuildings = from building in _context.Buildings
+        //                     join customer in _context.Customers on building.CustomerId equals customer.Id
+        //                     where email == customer.EmailOfTheCompany
+        //                     select building;
+
+          var findBuildings = await _context.Buildings.FromSqlInterpolated(
+                $@"SELECT *
+                FROM buildings WHERE customer_id =
+                (SELECT Id 
+                FROM customers WHERE EmailOfTheCompany = {email})")
+                .AsNoTracking()
+                .ToListAsync(); 
+
+        //var findBuildings = await _context.Buildings.FromSqlRaw("SELECT * FROM buildings WHERE customer_id = (SELECT Id FROM customers WHERE EmailOfTheCompany = {email})", email).AsNoTracking().ToListAsync();
+
+        return findBuildings;
+        }
     }
 
 }

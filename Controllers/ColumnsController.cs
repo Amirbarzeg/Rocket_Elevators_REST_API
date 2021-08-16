@@ -20,6 +20,11 @@ namespace Rocket_Elevators_REST_API.Controllers
         {
             _context = context;
         }
+         [HttpGet]
+        public async Task<ActionResult<IEnumerable<Columns>>> GetBatteries()
+        {
+            return await _context.Columns.ToListAsync();
+        }
 
         //Get: api/Columns/id/status
         //Info on status of column *id= column you want info on, for example: 1*

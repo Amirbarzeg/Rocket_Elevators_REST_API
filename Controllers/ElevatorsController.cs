@@ -20,6 +20,11 @@ namespace Rocket_Elevators_REST_API.Controllers
         {
             _context = context;
         }
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Elevators>>> GetBatteries()
+        {
+            return await _context.Elevators.ToListAsync();
+        }
 
         //Get: api/Elevators/id/status
         //Info on status of elevator *id= elevator you want info on, for example: 1*
@@ -37,7 +42,7 @@ namespace Rocket_Elevators_REST_API.Controllers
         }
 
         //Put: api/Elevators/id?status=s
-        //Change the status of elevator *id= elevator you want to change, s= what status to put, for example 1?status=on*
+        //Change the status of elevator *id= elevator you want to change, s= what status to put, for example 1?status=NotActive*
         [HttpPut("{id}")]
         public async Task<ActionResult<Elevators>> PutElevators(long id, string status)
         {
